@@ -1,5 +1,9 @@
 # TopGames
 
+Top Games is a reimplementation of [rankGames](https://github.com/moui72/rankGames/). See that repo for legacy info. This README is still being written.
+
+
+# Angular CLI generated readme
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
 
 ## Development server
