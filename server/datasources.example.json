@@ -6,10 +6,10 @@
   "main-db": {
     "host": "localhost",
     "port": 3306,
-    "database": "topgames",
-    "password": "zebra spine lock",
+    "database": "db",
+    "password": "pass",
     "name": "main-db",
-    "user": "topgamesapp",
+    "user": "user",
     "connector": "mysql"
   }
 }
