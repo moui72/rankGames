@@ -14,22 +14,41 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "maindb"
+  },
+  "Email": {
+    "dataSource": "email"
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "maindb",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "maindb",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "maindb",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "maindb",
     "public": false
+  },
+  "Gamer": {
+    "dataSource": "maindb",
+    "public": true
+  },
+  "Library": {
+    "dataSource": "maindb",
+    "public": true
+  },
+  "List": {
+    "dataSource": "maindb",
+    "public": true
+  },
+  "Game": {
+    "dataSource": "maindb",
+    "public": true
   }
 }

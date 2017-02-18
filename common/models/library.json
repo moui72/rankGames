@@ -1,0 +1,30 @@
+{
+  "name": "Library",
+  "plural": "Libraries",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "default": "New library"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "games": {
+      "type": "hasMany",
+      "model": "game",
+      "foreignKey": ""
+    },
+    "gamer": {
+      "type": "belongsTo",
+      "model": "Gamer",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

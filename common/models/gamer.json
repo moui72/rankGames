@@ -1,0 +1,35 @@
+{
+  "name": "Gamer",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "default": "Gamer"
+    },
+    "joined": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "libraries": {
+      "type": "hasMany",
+      "model": "library",
+      "foreignKey": ""
+    },
+    "lists": {
+      "type": "hasMany",
+      "model": "list",
+      "foreignKey": "",
+      "through": "library"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

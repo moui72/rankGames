@@ -1,0 +1,29 @@
+{
+  "name": "Game",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "gameId": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "owners": {
+      "type": "hasMany",
+      "model": "Gamer",
+      "foreignKey": "GamerIds",
+      "through": "Library"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

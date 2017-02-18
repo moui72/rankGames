@@ -1,0 +1,42 @@
+{
+  "name": "List",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "default": "New list"
+    },
+    "description": {
+      "type": "string"
+    },
+    "created": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "slug": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "games": {
+      "type": "hasMany",
+      "model": "game",
+      "foreignKey": ""
+    },
+    "library": {
+      "type": "belongsTo",
+      "model": "library",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

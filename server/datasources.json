@@ -3,13 +3,29 @@
     "name": "db",
     "connector": "memory"
   },
-  "main-db": {
+  "maindb": {
     "host": "localhost",
     "port": 3306,
     "database": "topgames",
     "password": "zebra spine lock",
-    "name": "main-db",
+    "name": "maindb",
     "user": "topgamesapp",
     "connector": "mysql"
+  },
+  "email": {
+    "name": "email",
+    "connector": "mail",
+    "transports": [{
+      "type": "smtp",
+      "host": "skyler.asoshared.com",
+      "secure": true,
+      "tls": {
+        "rejectUnauthorized": false
+      },
+      "auth": {
+        "user": "noreply@gotu-game.com",
+        "pass": "6J4E$!~G{PWD"
+      }
+    }]
   }
 }
