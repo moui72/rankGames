@@ -12,7 +12,7 @@ import { GamerApi, LoggerService, Gamer, AccessToken } from '../shared/sdk';
 export class AuthComponent implements OnInit {
 
   currentTab = 0;
-  usr = new Gamer();
+  usr = {email: '', dateOfBirth: Date.now(), password: '', };
   rememberMe = true;
 
   constructor(
@@ -23,25 +23,26 @@ export class AuthComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
   }
 
   /**
    * creates user account
    */
   signup(): void {
-      this.usrApi.create(this.usr)
-      .subscribe((u: Gamer) => this.signin(),
-        (error) => this.errors(error));
+    this.usrApi.create(this.usr)
+    .subscribe((u) => this.signin(),
+      (error) => this.errors(error));
   }
 
   /**
    * logs user in
    */
   signin(): void {
-      this.usrApi.login(this.usr, null, this.rememberMe)
-      .subscribe((token: AccessToken) => {
-        this.router.navigateByUrl('dash');
-      }, (error) => this.errors(error));
+    this.usrApi.login(this.usr, null, this.rememberMe)
+    .subscribe((token: AccessToken) => {
+      this.router.navigateByUrl('dash');
+    }, (error) => this.errors(error));
   }
 
   /**

@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
-import { GamerApi, LoggerService, Gamer } from '../shared/sdk';
+import { GamerApi, LoggerService } from '../shared/sdk';
 var AuthComponent = (function () {
     function AuthComponent(snackbar, usrApi, con, router) {
         this.snackbar = snackbar;
@@ -18,7 +18,7 @@ var AuthComponent = (function () {
         this.con = con;
         this.router = router;
         this.currentTab = 0;
-        this.usr = new Gamer();
+        this.usr = { email: '', dateOfBirth: Date.now(), password: '', };
         this.rememberMe = true;
     }
     AuthComponent.prototype.ngOnInit = function () {

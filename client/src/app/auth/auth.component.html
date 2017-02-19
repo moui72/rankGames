@@ -7,7 +7,7 @@
       </template>
       <h2>Log in</h2>
       <p>
-        Log in to play Guilds of Tir Urdd. If you don't have an account, you
+        Log in to use Top Games. If you don't have an account, you
         can <a (click)="setCurrentTab(1)">sign up</a> for free or <a (click)="setCurrentTab(2)">learn more</a> about it.
       </p>
       <form>
@@ -31,7 +31,7 @@
          </md-checkbox>
         </div>
         <div>
-          <button md-button (click)="signin()" class="btn btn-success right">Submit</button>
+          <button md-button (click)="signin()" class="right">Submit</button>
         </div>
       </form>
     </md-tab>
@@ -44,7 +44,7 @@
       </template>
       <h2>Sign up</h2>
       <p>
-        The game is free, and hopefully fun!
+        The app is free to use, and hopefully fun!
       </p>
       <form>
         <!-- email -->
@@ -67,7 +67,7 @@
             [(ngModel)]="usr.dateOfBirth" required name="dateOfBirth">
         </div>
         <div>
-          <button md-button (click)="signup()" class="btn btn-success">Submit</button>
+          <button md-button (click)="signup()" class="right">Submit</button>
         </div>
       </form>
     </md-tab>
@@ -79,7 +79,7 @@
       <h2>About</h2>
       <p>
         ...
-        <!-- TODO write some info about the game. -->
+        <!-- TODO write some info about the app. -->
       </p>
     </md-tab>
 
