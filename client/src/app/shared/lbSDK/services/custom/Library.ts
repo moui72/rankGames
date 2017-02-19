@@ -127,6 +127,37 @@ export class LibraryApi extends BaseLoopBackApi {
   }
 
   /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   *  - `command` – `{string}` - Maps to one of the [BGG_XML_API2](https://boardgamegeek.
+         *   com/wiki/page/BGG_XML_API2) commands.
+   *
+   *  - `arguments` – `{Object}` - Arguments for the BGG_XML_API2 call
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * This method returns no data.
+   */
+  public bggFetch(command: any, arguments: any): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/Libraries/bggFetch";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (command) _urlParams.command = command;
+    if (arguments) _urlParams.arguments = arguments;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    return result;
+  }
+
+  /**
    * The name of the model represented by this $resource,
    * i.e. `Library`.
    */

@@ -15,17 +15,19 @@
   "email": {
     "name": "email",
     "connector": "mail",
-    "transports": [{
-      "type": "smtp",
-      "host": "skyler.asoshared.com",
-      "secure": true,
-      "tls": {
-        "rejectUnauthorized": false
-      },
-      "auth": {
-        "user": "noreply@gotu-game.com",
-        "pass": "6J4E$!~G{PWD"
+    "transports": [
+      {
+        "type": "smtp",
+        "host": "skyler.asoshared.com",
+        "secure": true,
+        "tls": {
+          "rejectUnauthorized": false
+        },
+        "auth": {
+          "user": "noreply@gotu-game.com",
+          "pass": "6J4E$!~G{PWD"
+        }
       }
-    }]
+    ]
   }
 }

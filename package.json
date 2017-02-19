@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "eslint .",
     "start": "node .",
-    "posttest": "npm run lint && nsp check"
+    "posttest": "npm run lint && nsp check",
+    "build:sdk": "./node_modules/.bin/lb-sdk server/server client/src/app/shared/lbSDK -v enabled -w enabled"
   },
   "dependencies": {
     "@mean-expert/loopback-sdk-builder": "2.1.0-rc.8.3",

@@ -4,6 +4,7 @@ declare var Object: any;
 export interface GamerInterface {
   name?: string;
   joined: Date;
+  bggUser?: string;
   realm?: string;
   username?: string;
   password: string;
@@ -17,6 +18,7 @@ export interface GamerInterface {
 export class Gamer implements GamerInterface {
   name: string = 'Gamer';
   joined: Date = new Date(0);
+  bggUser: string = '';
   realm: string = '';
   username: string = '';
   password: string = '';
@@ -64,6 +66,10 @@ export class Gamer implements GamerInterface {
         joined: {
           name: 'joined',
           type: 'Date'
+        },
+        bggUser: {
+          name: 'bggUser',
+          type: 'string'
         },
         realm: {
           name: 'realm',

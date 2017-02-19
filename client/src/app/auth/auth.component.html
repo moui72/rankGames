@@ -1,0 +1,97 @@
+<md-card class="center middle max-500">
+  <md-tab-group [(selectedIndex)]="currentTab">
+    <!-- begin log in-->
+    <md-tab>
+      <template md-tab-label>
+        Log in
+      </template>
+      <h2>Log in</h2>
+      <p>
+        Log in to play Guilds of Tir Urdd. If you don't have an account, you
+        can <a (click)="setCurrentTab(1)">sign up</a> for free or <a (click)="setCurrentTab(2)">learn more</a> about it.
+      </p>
+      <form>
+        <!-- email -->
+        <div>
+          <md-input-container class="form-group">
+            <label for="email">E-mail</label>
+            <input md-input type="email" class="form-control" id="email"
+            [(ngModel)]="player.email" required name="email">
+          </md-input-container>
+        </div>
+        <!-- password -->
+        <div>
+          <md-input-container class="form-group">
+            <label for="password">Password</label>
+            <input md-input type="password" class="form-control" id="password"
+             [(ngModel)]="player.password" required name="password">
+          </md-input-container>
+        </div>
+        <!-- remember -->
+        <div>
+          <md-checkbox class="form-control" id="rememberMe"
+           [(ngModel)]="rememberMe" required name="rememberMe">
+           <label for="rememberMe">Remember me</label>
+         </md-checkbox>
+        </div>
+        <div>
+          <button md-button (click)="signin()" class="btn btn-success right">Submit</button>
+        </div>
+      </form>
+    </md-tab>
+    <!-- end log in -->
+
+    <!-- begin sign up -->
+    <md-tab>
+      <template md-tab-label>
+        Sign up
+      </template>
+      <h2>Sign up</h2>
+      <p>
+        The game is free, and hopefully fun!
+      </p>
+      <form>
+        <!-- email -->
+        <div>
+          <md-input-container class="form-group">
+            <label for="email">E-mail</label>
+            <input md-input type="email" class="form-control" id="email"
+            [(ngModel)]="player.email" required name="email">
+          </md-input-container>
+        </div>
+        <!-- password -->
+        <div>
+          <md-input-container class="form-group">
+            <label for="password">Password</label>
+            <input md-input type="password" class="form-control" id="password"
+            [(ngModel)]="player.password" required name="password">
+          </md-input-container>
+        </div>
+        <!-- date of birth -->
+        <div>
+          <md-input-container class="form-group">
+            <label for="dateOfBirth">Date of birth</label>
+            <input md-input
+            type="date" class="form-control" id="dateOfBirth"
+            [(ngModel)]="player.dateOfBirth" required name="dateOfBirth">
+          </md-input-container>
+        </div>
+        <div>
+          <button md-button (click)="signup()" class="btn btn-success">Submit</button>
+        </div>
+      </form>
+    </md-tab>
+    <!-- end sign up -->
+    <md-tab>
+      <template md-tab-label>
+        Info
+      </template>
+      <h2>About</h2>
+      <p>
+        ...
+        <!-- TODO write some info about the game. -->
+      </p>
+    </md-tab>
+
+  </md-tab-group>
+</md-card>
