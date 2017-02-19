@@ -12,20 +12,16 @@
       </p>
       <form>
         <!-- email -->
-        <div>
-          <md-input-container class="form-group">
-            <label for="email">E-mail</label>
-            <input md-input type="email" class="form-control" id="email"
-            [(ngModel)]="player.email" required name="email">
-          </md-input-container>
+        <div md-input-container>
+          <label for="email">E-mail</label>
+          <input md-input type="email" class="form-control" id="email"
+          [(ngModel)]="usr.email" required name="email">
         </div>
         <!-- password -->
-        <div>
-          <md-input-container class="form-group">
-            <label for="password">Password</label>
-            <input md-input type="password" class="form-control" id="password"
-             [(ngModel)]="player.password" required name="password">
-          </md-input-container>
+        <div md-input-container >
+          <label for="password">Password</label>
+          <input md-input type="password" class="form-control" id="password"
+            [(ngModel)]="usr.password" required name="password">
         </div>
         <!-- remember -->
         <div>
@@ -52,29 +48,23 @@
       </p>
       <form>
         <!-- email -->
-        <div>
-          <md-input-container class="form-group">
-            <label for="email">E-mail</label>
-            <input md-input type="email" class="form-control" id="email"
-            [(ngModel)]="player.email" required name="email">
-          </md-input-container>
+        <div md-input-container class="form-group">
+          <label for="email">E-mail</label>
+          <input md-input type="email" class="form-control" id="email"
+            [(ngModel)]="usr.email" required name="email">
         </div>
         <!-- password -->
-        <div>
-          <md-input-container class="form-group">
-            <label for="password">Password</label>
-            <input md-input type="password" class="form-control" id="password"
-            [(ngModel)]="player.password" required name="password">
-          </md-input-container>
+        <div md-input-container class="form-group">
+          <label for="password">Password</label>
+          <input md-input type="password" class="form-control" id="password"
+            [(ngModel)]="usr.password" required name="password">
         </div>
         <!-- date of birth -->
-        <div>
-          <md-input-container class="form-group">
-            <label for="dateOfBirth">Date of birth</label>
-            <input md-input
+        <div md-input-container class="form-group">
+          <label for="dateOfBirth">Date of birth</label>
+          <input md-input
             type="date" class="form-control" id="dateOfBirth"
-            [(ngModel)]="player.dateOfBirth" required name="dateOfBirth">
-          </md-input-container>
+            [(ngModel)]="usr.dateOfBirth" required name="dateOfBirth">
         </div>
         <div>
           <button md-button (click)="signup()" class="btn btn-success">Submit</button>

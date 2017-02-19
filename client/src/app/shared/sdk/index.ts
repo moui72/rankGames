@@ -44,10 +44,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CookieBrowser } from './storage/cookie.browser';
 import { StorageBrowser } from './storage/storage.browser';
-import { SocketBrowser } from './sockets/socket.browser';
-import { SocketDriver } from './sockets/socket.driver';
-import { SocketConnection } from './sockets/socket.connections';
-import { RealTime } from './services/core/real.time';
 import { UserApi } from './services/custom/User';
 import { EmailApi } from './services/custom/Email';
 import { GamerApi } from './services/custom/Gamer';
@@ -68,8 +64,7 @@ import { GameApi } from './services/custom/Game';
   declarations: [ ],
   exports:      [ ],
   providers:    [
-    ErrorHandler,
-    SocketConnection
+    ErrorHandler
   ]
 })
 export class SDKBrowserModule {
@@ -84,7 +79,6 @@ export class SDKBrowserModule {
         LoggerService,
         JSONSearchParams,
         SDKModels,
-        RealTime,
         UserApi,
         EmailApi,
         GamerApi,
@@ -92,8 +86,7 @@ export class SDKBrowserModule {
         ListApi,
         GameApi,
         internalStorageProvider,
-        { provide: SDKStorage, useClass: StorageBrowser },
-        { provide: SocketDriver, useClass: SocketBrowser }
+        { provide: SDKStorage, useClass: StorageBrowser }
       ]
     };
   }

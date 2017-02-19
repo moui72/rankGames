@@ -1,0 +1,63 @@
+@import '~@angular/material/core/theming/all-theme';
+// Plus imports for other components in your app.
+
+// Include the base styles for Angular Material core. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+
+/* custom theme */
+$primary: mat-palette($mat-indigo, 700);
+$accent:  mat-palette($mat-light-blue);
+$warn:    mat-palette($mat-orange, 600);
+
+$theme: mat-light-theme($primary, $accent, $warn);
+@include angular-material-theme($theme);
+
+/* global styles */
+.halfwidth {
+  width: 50%;
+}
+.fourthwidth {
+  width: 25%;
+}
+.min-halfwidth {
+  min-width: 50%;
+}
+.min-fourthwidth {
+  min-width: 25%;
+}
+.max-400{
+  max-width: 400px;
+}
+.max-500{
+  max-width: 500px;
+}
+.max-600{
+  max-width: 600px;
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
+.text-center{
+  text-align: center;
+}
+.text-right{
+  text-align: right;
+}
+.text-left{
+  text-align: left;
+}
+label {
+  font-weight: bold;
+}

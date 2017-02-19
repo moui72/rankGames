@@ -10,25 +10,54 @@ import { JSONSearchParams } from '../core/search.params';
 import { ErrorHandler } from '../core/error.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
-import { List } from '../../models/List';
-import { SocketConnection } from '../../sockets/socket.connections';
+import { Library } from '../../models/Library';
+import { Gamer } from '../../models/Gamer';
 
 
 /**
- * Api services for the `List` model.
+ * Api services for the `Library` model.
  */
 @Injectable()
-export class ListApi extends BaseLoopBackApi {
+export class LibraryApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(Http) protected http: Http,
-    @Inject(SocketConnection) protected connection: SocketConnection,
     @Inject(SDKModels) protected models: SDKModels,
     @Inject(LoopBackAuth) protected auth: LoopBackAuth,
     @Inject(JSONSearchParams) protected searchParams: JSONSearchParams,
     @Optional() @Inject(ErrorHandler) protected errorHandler: ErrorHandler
   ) {
-    super(http,  connection,  models, auth, searchParams, errorHandler);
+    super(http,  models, auth, searchParams, errorHandler);
+  }
+
+  /**
+   * Fetches belongsTo relation gamer.
+   *
+   * @param {any} id Library id
+   *
+   * @param {boolean} refresh 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `Library` object.)
+   * </em>
+   */
+  public getGamer(id: any, refresh: any = {}): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/Libraries/:id/gamer";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (refresh) _urlParams.refresh = refresh;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    return result;
   }
 
   /**
@@ -46,13 +75,13 @@ export class ListApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `List` object.)
+   * This usually means the response is a `Library` object.)
    * </em>
    */
   public patchOrCreate(data: any = {}, options: any = {}): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Lists";
+    "/Libraries";
     let _routeParams: any = {};
     let _postBody: any = {
       data: data
@@ -65,7 +94,7 @@ export class ListApi extends BaseLoopBackApi {
   /**
    * Patch attributes for a model instance and persist it into the data source.
    *
-   * @param {any} id List id
+   * @param {any} id Library id
    *
    * @param {object} data Request data.
    *
@@ -77,13 +106,13 @@ export class ListApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `List` object.)
+   * This usually means the response is a `Library` object.)
    * </em>
    */
   public patchAttributes(id: any, data: any = {}): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Lists/:id";
+    "/Libraries/:id";
     let _routeParams: any = {
       id: id
     };
@@ -96,10 +125,41 @@ export class ListApi extends BaseLoopBackApi {
   }
 
   /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   *  - `command` – `{string}` - Maps to one of the [BGG_XML_API2](https://boardgamegeek.
+         *   com/wiki/page/BGG_XML_API2) commands.
+   *
+   *  - `bggArgs` – `{Object}` - Arguments for the BGG_XML_API2 call
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * This method returns no data.
+   */
+  public bggFetch(command: any, bggArgs: any): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/Libraries/bggFetch";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (command) _urlParams.command = command;
+    if (bggArgs) _urlParams.bggArgs = bggArgs;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    return result;
+  }
+
+  /**
    * The name of the model represented by this $resource,
-   * i.e. `List`.
+   * i.e. `Library`.
    */
   public getModelName() {
-    return "List";
+    return "Library";
   }
 }
