@@ -13,7 +13,7 @@ module.exports = function(Gamer) {
       from: 'noreply@gotu-game.com',
       subject: 'Thanks for registering.',
       template: path.resolve(__dirname, '../../server/views/verify.ejs'),
-      redirect: '/verified',
+      redirect: 'http://localhost:4200/verified',
       user: user,
     };
 
@@ -25,13 +25,7 @@ module.exports = function(Gamer) {
 
       console.log('> verification email sent:', response);
 
-      context.res.render('response', {
-        title: 'Signed up successfully',
-        content: 'Please check your email and click on the verification link ' +
-            'before logging in.',
-        redirectTo: '/',
-        redirectToLinkText: 'Log in',
-      });
+      context.res.status(200).json(response);
     });
   });
 

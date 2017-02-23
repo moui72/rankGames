@@ -13,7 +13,7 @@ module.exports = function(Library) {
       required: true,
       type: 'string',
     }, {
-      arg: 'arguments',
+      arg: 'bggArgs',
       description: ['Arguments for the BGG_XML_API2 call'],
       required: true,
       type: 'Object',
