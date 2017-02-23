@@ -3,11 +3,13 @@ import { Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
 
 import { GamerApi, LoggerService, Gamer, AccessToken } from '../shared/sdk';
+import { RedirectService } from 'app/redirect.service';
+
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.css']
+  styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
 
@@ -19,11 +21,12 @@ export class AuthComponent implements OnInit {
     private snackbar: MdSnackBar,
     private usrApi: GamerApi,
     private con: LoggerService,
-    private router: Router
+    private router: Router,
+    private redirect: RedirectService,
   ) { }
 
   ngOnInit() {
-
+    this.con.log('auth init');
   }
 
   /**
@@ -31,17 +34,21 @@ export class AuthComponent implements OnInit {
    */
   signup(): void {
     this.usrApi.create(this.usr)
-    .subscribe((u) => this.signin(),
+    .subscribe((u) => this.router.navigate(['/verify']),
       (error) => this.errors(error));
   }
 
   /**
-   * logs user in
+   * logs user in and redirects to request URL or dashboard if no requested URL
    */
   signin(): void {
     this.usrApi.login(this.usr, null, this.rememberMe)
     .subscribe((token: AccessToken) => {
-      this.router.navigateByUrl('dash');
+      let url = 'dashboard';
+      if (this.redirect.pending()) {
+        url = this.redirect.consume();
+      }
+      this.router.navigateByUrl(url);
     }, (error) => this.errors(error));
   }
 

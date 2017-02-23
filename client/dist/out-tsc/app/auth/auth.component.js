@@ -11,28 +11,35 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
 import { GamerApi, LoggerService } from '../shared/sdk';
+import { RedirectService } from 'app/redirect.service';
 var AuthComponent = (function () {
-    function AuthComponent(snackbar, usrApi, con, router) {
+    function AuthComponent(snackbar, usrApi, con, router, redirect) {
         this.snackbar = snackbar;
         this.usrApi = usrApi;
         this.con = con;
         this.router = router;
+        this.redirect = redirect;
         this.currentTab = 0;
         this.usr = { email: '', dateOfBirth: Date.now(), password: '', };
         this.rememberMe = true;
     }
     AuthComponent.prototype.ngOnInit = function () {
+        this.con.log('auth init');
     };
     AuthComponent.prototype.signup = function () {
         var _this = this;
         this.usrApi.create(this.usr)
-            .subscribe(function (u) { return _this.signin(); }, function (error) { return _this.errors(error); });
+            .subscribe(function (u) { return _this.router.navigate(['/verify']); }, function (error) { return _this.errors(error); });
     };
     AuthComponent.prototype.signin = function () {
         var _this = this;
         this.usrApi.login(this.usr, null, this.rememberMe)
             .subscribe(function (token) {
-            _this.router.navigateByUrl('dash');
+            var url = 'dashboard';
+            if (_this.redirect.pending()) {
+                url = _this.redirect.consume();
+            }
+            _this.router.navigateByUrl(url);
         }, function (error) { return _this.errors(error); });
     };
     AuthComponent.prototype.errors = function (error) {
@@ -61,12 +68,13 @@ AuthComponent = __decorate([
     Component({
         selector: 'app-auth',
         templateUrl: './auth.component.html',
-        styleUrls: ['./auth.component.css']
+        styleUrls: ['./auth.component.scss']
     }),
     __metadata("design:paramtypes", [MdSnackBar,
         GamerApi,
         LoggerService,
-        Router])
+        Router,
+        RedirectService])
 ], AuthComponent);
 export { AuthComponent };
 //# sourceMappingURL=../../../../src/app/auth/auth.component.js.map

@@ -1,3 +1,6 @@
+<h1 class="text-center title title-font">
+  Top Games
+</h1>
 <md-card class="center middle max-500">
   <md-tab-group [(selectedIndex)]="currentTab">
     <!-- begin log in-->
@@ -8,7 +11,8 @@
       <h2>Log in</h2>
       <p>
         Log in to use Top Games. If you don't have an account, you
-        can <a (click)="setCurrentTab(1)">sign up</a> for free or <a (click)="setCurrentTab(2)">learn more</a> about it.
+        can <button class="link" (click)="setCurrentTab(1)">sign up</button> for free or
+        <button class="link" (click)="setCurrentTab(2)">learn more</button> about it.
       </p>
       <form>
         <!-- email -->

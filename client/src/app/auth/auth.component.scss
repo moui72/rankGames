@@ -1,0 +1,10 @@
+// Import theming functions
+@import '~@angular/material/core/theming/theming';
+@import 'src/styles.scss';
+// Using the $theme variable from the pre-built theme you can call the theming function
+@include tg-theme($theme);
+
+.title{
+  margin: 4em 0 0 0;
+  color: mat-color($primary);
+}

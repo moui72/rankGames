@@ -4,26 +4,49 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router';
-import { GamerApi } from './shared/sdk/services';
+import { GamerApi, LoggerService } from './shared/sdk/services';
+import { RedirectService } from './redirect.service';
 
 @Injectable()
 export class CanActivateViaAuthGuard implements CanActivate {
 
-  constructor(private usrApi: GamerApi, private router: Router) {}
+  constructor(
+    private usrApi: GamerApi,
+    private router: Router,
+    private redirect: RedirectService,
+    private con: LoggerService,
+  ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const url: string = state.url;
-    return this.checkLogin(url);
+    return this.checkLogin(state.url);
   }
 
   checkLogin(url: string): boolean {
-    if (this.usrApi.isAuthenticated()) { return true; }
+    if (url === '/auth') {
+      if (!this.usrApi.isAuthenticated()) {
+        this.log('Unauthenticated user, continue');
+        return true;
+      }
+      this.log('Authenticated user, redirect to dashboard');
+      this.router.navigate(['/dashboard']);
+      return false;
+    }
+    if (this.usrApi.isAuthenticated()) {
+      this.log('Authenticated user, continue');
+      return true;
+    }
 
-    // TODO Store the attempted URL for redirecting
-    // this.usrApi.redirectUrl = url;
+    this.log('Unauthenticated user, please log in');
 
-    // Navigate to the login page with extras
+    // Store the attempted URL for redirecting
+    this.redirect.set(url);
+
+    // Navigate to the login page
     this.router.navigate(['/auth']);
     return false;
+  }
+
+  log(msg: string) {
+    this.con.log('AuthGuard: ' + msg);
   }
 }
