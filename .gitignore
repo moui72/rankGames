@@ -19,4 +19,31 @@ node_modules
 npm-debug.log
 server/datasources.json
 *providers.json
-client/dist
+
+# compiled output
+/dist
+/tmp
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+#System Files
+.DS_Store
+Thumbs.db
