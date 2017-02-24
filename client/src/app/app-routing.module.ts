@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthComponent } from './auth/auth.component';
+import { PublicComponent } from './public/public.component';
 import { VerifiedComponent } from './verified/verified.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { CanActivateViaAuthGuard } from './auth.guard';
@@ -15,14 +17,6 @@ const routes: Routes = [
     CanActivateViaAuthGuard,
     CanActivateViaVerifiedEmailGuard,
   ]},
-  { path: 'auth',  component: AuthComponent, canActivate: [
-    CanActivateViaAuthGuard,
-  ]},
-  { path: 'verify', component: VerifyEmailComponent, canActivate: [
-    CanActivateViaAuthGuard,
-    CanActivateViaVerifiedEmailGuard,
-  ]},
-  { path: 'verified', component: VerifiedComponent, },
 ];
 
 @NgModule({

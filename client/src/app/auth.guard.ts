@@ -22,12 +22,13 @@ export class CanActivateViaAuthGuard implements CanActivate {
   }
 
   checkLogin(url: string): boolean {
+    this.log('Attmpting to access ' + url);
     if (url === '/auth') {
       if (!this.usrApi.isAuthenticated()) {
-        this.log('Unauthenticated user, continue');
+        this.log('Unauthenticated user, please log in');
         return true;
       }
-      this.log('Authenticated user, redirect to dashboard');
+      this.log('User already authenticated, redirecting to dashboard');
       this.router.navigate(['/dashboard']);
       return false;
     }
@@ -36,7 +37,7 @@ export class CanActivateViaAuthGuard implements CanActivate {
       return true;
     }
 
-    this.log('Unauthenticated user, please log in');
+    this.log('Unauthenticated user, redirecting to log in');
 
     // Store the attempted URL for redirecting
     this.redirect.set(url);
