@@ -14,7 +14,7 @@ import { RedirectService } from '../../redirect.service';
 export class AuthComponent implements OnInit {
 
   currentTab = 0;
-  usr = {email: '', dateOfBirth: Date.now(), password: '', };
+  usr = {email: '', password: '', };
   rememberMe = true;
 
   constructor(
@@ -34,12 +34,16 @@ export class AuthComponent implements OnInit {
    */
   signup(): void {
     this.usrApi.create(this.usr)
-    .subscribe((u) => this.router.navigate(['/verify']),
-      (error) => this.errors(error));
+    .subscribe((u: Gamer) => {
+      this.usrApi.login(this.usr, null, false).subscribe(token => {
+        this.router.navigate(['/verify', {id: u.id, token: token}]);
+      }, error => this.errors(error));
+    }, error => this.errors(error));
   }
 
   /**
-   * logs user in and redirects to request URL or dashboard if no requested URL
+   * logs user in and redirects to requested URL
+   * or redirects to dashboard if no requested URL
    */
   signin(): void {
     this.usrApi.login(this.usr, null, this.rememberMe)
