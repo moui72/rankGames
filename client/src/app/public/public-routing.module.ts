@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Router, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-import { AuthComponent } from '../auth/auth.component';
-import { PublicComponent } from './public.component';
-import { VerifiedComponent } from '../verified/verified.component';
-import { VerifyEmailComponent } from '../verify-email/verify-email.component';
 import { CanActivateViaAuthGuard } from '../auth.guard';
 import { CanActivateViaVerifiedEmailGuard } from '../verified-email.guard';
-import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
+
+import { AuthComponent } from './auth/auth.component';
+import { PublicComponent } from './public.component';
+import { VerifiedComponent } from './verified/verified.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const publicRoutes: Routes = [
   {
@@ -39,7 +40,3 @@ const publicRoutes: Routes = [
   providers: [CanActivateViaAuthGuard, CanActivateViaVerifiedEmailGuard],
 })
 export class PublicRoutingModule { }
-
-
-
-export class CrisisCenterRoutingModule { }

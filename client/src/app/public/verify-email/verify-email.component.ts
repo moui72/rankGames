@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { GamerApi, LoggerService, Gamer, AccessToken } from '../shared/sdk';
+import { GamerApi, LoggerService, Gamer, AccessToken } from '../../shared/sdk';
 
 @Component({
   selector: 'app-verify-email',

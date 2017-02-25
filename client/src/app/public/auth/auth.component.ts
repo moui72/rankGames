@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
 
-import { GamerApi, LoggerService, Gamer, AccessToken } from '../shared/sdk';
-import { RedirectService } from 'app/redirect.service';
+import { GamerApi, LoggerService, Gamer, AccessToken } from '../../shared/sdk';
+import { RedirectService } from '../../redirect.service';
 
 
 @Component({

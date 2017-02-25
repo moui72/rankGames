@@ -6,13 +6,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AuthComponent } from '../auth/auth.component';
-import { PublicComponent } from './public.component';
-import { VerifiedComponent } from '../verified/verified.component';
-import { VerifyEmailComponent } from '../verify-email/verify-email.component';
 import { CanActivateViaAuthGuard } from '../auth.guard';
 import { CanActivateViaVerifiedEmailGuard } from '../verified-email.guard';
-import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
+import { AuthComponent } from './auth/auth.component';
+import { PublicComponent } from './public.component';
+import { VerifiedComponent } from './verified/verified.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 var publicRoutes = [
     {
         path: '',
@@ -49,10 +49,4 @@ PublicRoutingModule = __decorate([
     })
 ], PublicRoutingModule);
 export { PublicRoutingModule };
-var CrisisCenterRoutingModule = (function () {
-    function CrisisCenterRoutingModule() {
-    }
-    return CrisisCenterRoutingModule;
-}());
-export { CrisisCenterRoutingModule };
 //# sourceMappingURL=../../../../src/app/public/public-routing.module.js.map
