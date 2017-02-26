@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { GamerApi, LoggerService, Gamer, AccessToken } from '../../shared/sdk';
+import {
+  LoopBackAuth,
+  GamerApi,
+  LoggerService,
+  Gamer,
+  AccessToken
+} from '../../shared/sdk';
 
 @Component({
   selector: 'app-verify-email',
@@ -25,10 +31,7 @@ export class VerifyEmailComponent implements OnInit {
   }
 
   resend() {
-    this.usrApi.getCachedCurrent()
-      .subscribe(u => this.usrApi.resendVerification(u)
-        .subscribe(() => this.logout))
-
+    this.usrApi.sendVerificationEmail();
   }
 
   logout() {

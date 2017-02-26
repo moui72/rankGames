@@ -49,6 +49,9 @@ export class CanActivateViaVerifiedEmailGuard implements CanActivate {
           this.log(res);
           this.router.navigate(['/auth']);
           obs.next(false);
+        }, logoutError => {
+          this.con.error(logoutError);
+          this.router.navigate(['/auth']);
         });
       });
     });
@@ -64,7 +67,7 @@ export class CanActivateViaVerifiedEmailGuard implements CanActivate {
           return obs.next(false);
         }
       }, error => {
-        this.con.error(error)
+        this.con.error(error);
         return obs.error('no current user');
       });
     });

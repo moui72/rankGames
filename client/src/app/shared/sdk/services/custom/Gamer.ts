@@ -438,7 +438,7 @@ export class GamerApi extends BaseLoopBackApi {
    *
    * @param {object} data Request data.
    *
-   *  - `user` – `{number}` - 
+   * This method does not accept any data. Supply an empty object.
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -446,14 +446,13 @@ export class GamerApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public resendVerification(user: any): Observable<any> {
+  public sendVerificationEmail(): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Gamers/resendVerification";
+    "/Gamers/sendVerificationEmail";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (user) _urlParams.user = user;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
     return result;
   }
