@@ -44,14 +44,17 @@ export class CanActivateViaVerifiedEmailGuard implements CanActivate {
           }
         }
       }, error => {
-        this.log(error + ', destroy cached credentials and go to auth');
+        this.log(error + ', cached credentials');
         this.usrApi.logout().subscribe(res => {
           this.log(res);
+          this.log('logged out, redirect to auth');
           this.router.navigate(['/auth']);
           obs.next(false);
         }, logoutError => {
           this.con.error(logoutError);
+          this.log('could not log out, redirect to auth');
           this.router.navigate(['/auth']);
+          obs.next(false);
         });
       });
     });

@@ -3,10 +3,8 @@ var config = require('../../server/config.json');
 var path = require('path');
 
 module.exports = function(Gamer) {
-    //send verification email after registration
-  Gamer.afterRemote('create', function(context, user, next) {
+  Gamer.sendVerificationEmail = function(context, user, next) {
     console.log('> user.afterRemote triggered');
-
     var options = {
       type: 'email',
       to: user.email,
@@ -16,17 +14,33 @@ module.exports = function(Gamer) {
       redirect: 'http://localhost:4200/verified',
       user: user,
     };
-
     user.verify(options, function(err, response) {
       if (err) {
         Gamer.deleteById(user.id);
         return next(err);
       }
-
       console.log('> verification email sent:', response);
-
       context.res.status(200).json(response);
     });
+  };
+
+  //send verification email after registration
+  Gamer.afterRemote('create', Gamer.sendVerificationEmail);
+
+  //resend verification email
+  Gamer.afterRemoteError('create', function(context, next) {
+    console.log('> afterRemoteError triggered');
+    console.log(context.args.data.resend);
+    Gamer.findOne({where: {email: context.args.data.email}},
+      function(error, user) {
+        if (error) {
+          return next(error);
+        }
+        if (context.args.data.resend === true) {
+          return Gamer.sendVerificationEmail(context, user, next);
+        }
+        return next(error);
+      });
   });
 
   //send password reset link when requested

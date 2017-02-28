@@ -1,6 +1,6 @@
 @import '~@angular/material/core/theming/all-theme';
 // Plus imports for other components in your app.
-@import url('https://fonts.googleapis.com/css?family=Passero+One|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Faster+One|Roboto');
 // Include the base styles for Angular Material core. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 @include mat-core();
@@ -29,8 +29,15 @@ $theme: mat-light-theme($primary, $accent, $warn);
 body{
   font-family: 'Roboto', sans-serif;
 }
+.h-fill{
+  flex: 1 1 auto;
+}
 .title-font{
-  font-family: 'Passero One', cursive;
+  color: mat-color($primary);
+  font-family: 'Faster One', cursive;
+  font-size: 3em;
+  font-weight: 500;
+  margin: 0;
 }
 .halfwidth {
   width: 50%;
@@ -72,8 +79,22 @@ body{
 .text-left{
   text-align: left;
 }
-label {
-  font-weight: bold;
+.small {
+  font-size: 75%;
+}
+.form-group{
+  @extend .bottom-space;
+}
+.bottom-space {
+  margin-bottom: 1em;
+}
+input {
+  font-size: 150%;
+  width: 96%;
+  padding: 1.5%;
+}
+.mat-raised-button.mat-primary:hover{
+  background-color: map-get($accent, 700);
 }
 button.link {
   background: none;
@@ -85,4 +106,7 @@ button.link {
   padding: 0;
 	text-align: left;
   text-decoration: underline;
+}
+a:hover, button.link:hover {
+  color: map-get($accent, 700);
 }

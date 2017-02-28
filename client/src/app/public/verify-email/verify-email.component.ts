@@ -31,18 +31,30 @@ export class VerifyEmailComponent implements OnInit {
   }
 
   resend() {
-    this.usrApi.sendVerificationEmail();
+    this.usrApi.getCurrent().subscribe(usr => {
+      const resendUser = {email: usr.email, resend: true};
+      this.usrApi.create(resendUser).subscribe(user => {
+        const msg = 'Verification E-mail was sent to ' + usr.email + '.';
+        this.log(msg);
+        this.logout(msg);
+      }, error => this.con.error);
+    });
   }
 
-  logout() {
+  logout(msg?: string) {
     this.usrApi.logout().subscribe(r => {
       this.log('logged out');
       this.log(r);
       this.router.navigate(['/auth']);
     }, e => {
       this.log('log out attempted');
-      this.con.error(e);
-      this.router.navigate(['/auth']);
+      if (e.statusCode !== 400) {
+        this.con.error(e);
+      } else {
+        // logout failed because there was no current token
+        this.log('no current token');
+      }
+      this.router.navigate(['/auth', msg ? {msg: msg} : null]);
     });
   }
 

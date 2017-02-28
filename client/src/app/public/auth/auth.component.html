@@ -5,35 +5,38 @@
       Log in
     </template>
     <h2>Log in</h2>
-    <p>
+    <p class="bottom-space">
       Log in to use Top Games. If you don't have an account, you
       can <button class="link" (click)="setCurrentTab(1)">sign up</button> for free or
       <button class="link" (click)="setCurrentTab(2)">learn more</button> about it.
     </p>
     <form>
       <!-- email -->
-      <div md-input-container>
-        <label for="email">E-mail</label>
-        <input md-input type="email" class="form-control" id="email"
-        [(ngModel)]="usr.email" required name="email">
+      <div md-input-container class="form-group">
+        <input md-input placeholder="E-mail" type="email"
+          class="form-control" id="email"
+          [(ngModel)]="usr.email" required name="email">
       </div>
       <!-- password -->
-      <div md-input-container >
-        <label for="password">Password</label>
-        <input md-input type="password" class="form-control" id="password"
+      <div md-input-container class="form-group">
+        <input md-input placeholder="Password" type="password"
+          class="form-control" id="password"
           [(ngModel)]="usr.password" required name="password">
       </div>
       <!-- remember -->
-      <div>
+      <div class="small">
         <md-checkbox class="form-control" id="rememberMe"
          [(ngModel)]="rememberMe" required name="rememberMe">
-         <label for="rememberMe">Remember me</label>
+         Remember me
        </md-checkbox>
       </div>
       <div>
-        <button md-button (click)="signin()" class="right">Submit</button>
+        <button md-raised-button (click)="signin()" class="right" color="primary">Submit</button>
       </div>
     </form>
+    <p>
+      <button (click)="forgotPassword()" class="link">forgot my password</button>
+    </p>
   </md-tab>
   <!-- end log in -->
 
@@ -49,18 +52,19 @@
     <form>
       <!-- email -->
       <div md-input-container class="form-group">
-        <label for="email">E-mail</label>
-        <input md-input type="email" class="form-control" id="email"
+        <input md-input placeholder="E-mail" type="email"
+          class="form-control" id="email"
           [(ngModel)]="usr.email" required name="email">
+
       </div>
       <!-- password -->
       <div md-input-container class="form-group">
-        <label for="password">Password</label>
-        <input md-input type="password" class="form-control" id="password"
+        <input md-input placeholder="Password" type="password"
+          class="form-control" id="password"
           [(ngModel)]="usr.password" required name="password">
       </div>
       <div>
-        <button md-button (click)="signup()" class="right">Submit</button>
+        <button md-raised-button (click)="signup()" class="right" color="primary">Submit</button>
       </div>
     </form>
   </md-tab>

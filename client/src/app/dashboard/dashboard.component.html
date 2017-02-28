@@ -1,5 +1,24 @@
-<h1 class="text-center title title-font">
-  Top Games
-</h1>
-<h2>Dashboard</h2>
+<md-toolbar>
+  <h1 class="title title-font">
+    Top Games
+  </h1>
+  <span class="h-fill"></span>
+  <button md-icon-button [mdMenuTriggerFor]="menu">
+    <md-icon>menu</md-icon>
+  </button>
+</md-toolbar>
+
+<md-menu #menu="mdMenu">
+  <button md-menu-item>
+    <md-icon>close</md-icon>
+    <span>Log out</span>
+  </button>
+  <button md-menu-item disabled>
+    <md-icon>settings</md-icon>
+    <span>Preferences</span>
+  </button>
+</md-menu>
+
+<h2 class="text-center">Dashboard</h2>
+
 <router-outlet></router-outlet>

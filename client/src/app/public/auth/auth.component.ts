@@ -35,8 +35,8 @@ export class AuthComponent implements OnInit {
   signup(): void {
     this.usrApi.create(this.usr)
     .subscribe((u: Gamer) => {
-      this.usrApi.login(this.usr, null, false).subscribe(token => {
-        this.router.navigate(['/verify', {id: u.id, token: token}]);
+      this.usrApi.login(this.usr, null, true).subscribe(token => {
+        this.router.navigate(['/verify']);
       }, error => this.errors(error));
     }, error => this.errors(error));
   }
@@ -78,7 +78,7 @@ export class AuthComponent implements OnInit {
    * @param {string} msg the message to output
    */
   notify(msg: string): void {
-    const sbRef = this.snackbar.open(msg);
+    const sbRef = this.snackbar.open(msg, '', {duration: 5 * 1000});
   }
 
   /**
@@ -88,5 +88,7 @@ export class AuthComponent implements OnInit {
   setCurrentTab(n: number): void {
     this.currentTab = n;
   }
+
+  forgotPassword() {}
 
 }

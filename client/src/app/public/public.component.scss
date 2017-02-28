@@ -6,8 +6,8 @@
 
 .title {
   margin: 4em 0 0 0;
-  color: mat-color($primary);
-}
-html {
-  background-color: #888;
+  img{
+    margin-left: 16px;
+    filter: hue-rotate(-10deg) brightness(120%);
+  }
 }
