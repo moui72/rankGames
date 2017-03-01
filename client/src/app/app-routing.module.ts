@@ -13,7 +13,7 @@ import { CanActivateViaVerifiedEmailGuard } from './verified-email.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard',  component: DashboardComponent, canActivate: [
+  { path: 'dash',  component: DashboardComponent, canActivate: [
     CanActivateViaAuthGuard,
     CanActivateViaVerifiedEmailGuard,
   ]},

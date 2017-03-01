@@ -5,9 +5,9 @@ import { MaterialModule } from '@angular/material';
 import { SDKBrowserModule } from './shared/sdk/index';
 
 import { AuthModule } from './public/auth/auth.module';
-import { ImportModule } from './import/import.module';
 import { AppRoutingModule } from './app-routing.module';
 import { PublicRoutingModule } from './public/public-routing.module';
+import { PrivateRoutingModule } from './dashboard/private-routing.module';
 
 import { AppComponent } from './app.component';
 import { RedirectService } from './redirect.service';
@@ -31,10 +31,10 @@ import { MainDashComponent } from './dashboard/main-dash/main-dash.component';
   imports: [
     AuthModule,
     BrowserModule,
-    ImportModule,
     MaterialModule,
     AppRoutingModule,
     PublicRoutingModule,
+    PrivateRoutingModule,
     SDKBrowserModule.forRoot(),
   ],
   providers: [RedirectService],
