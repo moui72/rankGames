@@ -6,15 +6,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { CanActivateViaAuthGuard } from './auth.guard';
-import { CanActivateViaVerifiedEmailGuard } from './verified-email.guard';
 var routes = [
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-    { path: 'dash', component: DashboardComponent, canActivate: [
-            CanActivateViaAuthGuard,
-            CanActivateViaVerifiedEmailGuard,
-        ] },
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
@@ -23,12 +16,11 @@ var AppRoutingModule = (function () {
 }());
 AppRoutingModule = __decorate([
     NgModule({
-        imports: [RouterModule.forRoot(routes)],
-        exports: [RouterModule],
-        providers: [
-            CanActivateViaAuthGuard,
-            CanActivateViaVerifiedEmailGuard
+        imports: [
+            RouterModule.forRoot(routes),
         ],
+        exports: [RouterModule],
+        providers: [],
     })
 ], AppRoutingModule);
 export { AppRoutingModule };

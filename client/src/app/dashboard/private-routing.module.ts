@@ -17,7 +17,7 @@ const privateRoutes: Routes = [
     ],
     children: [
       {path: '', component: MainDashComponent},
-
+      {path: '**', redirectTo: '/404'},
     ]
   }
 ];

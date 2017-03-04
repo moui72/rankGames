@@ -6,21 +6,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GameDataComponent } from './game-data.component';
-var GameDataModule = (function () {
-    function GameDataModule() {
+import { MaterialModule } from '@angular/material';
+import { PrivateRoutingModule } from './private-routing.module';
+import { DashboardComponent } from './dashboard.component';
+import { MainDashComponent } from './main-dash/main-dash.component';
+var DashboardModule = (function () {
+    function DashboardModule() {
     }
-    return GameDataModule;
+    return DashboardModule;
 }());
-GameDataModule = __decorate([
+DashboardModule = __decorate([
     NgModule({
         imports: [
-            CommonModule
+            CommonModule,
+            PrivateRoutingModule,
+            MaterialModule,
         ],
         declarations: [
-            GameDataComponent,
+            DashboardComponent,
+            MainDashComponent
         ]
     })
-], GameDataModule);
-export { GameDataModule };
-//# sourceMappingURL=../../../../src/app/game-data/game-data.module.js.map
+], DashboardModule);
+export { DashboardModule };
+//# sourceMappingURL=../../../../src/app/dashboard/dashboard.module.js.map
