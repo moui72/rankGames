@@ -31,7 +31,7 @@ export class LibraryApi extends BaseLoopBackApi {
   }
 
   /**
-   * Fetches belongsTo relation gamer.
+   * Fetches belongsTo relation owner.
    *
    * @param {any} id Library id
    *
@@ -46,10 +46,10 @@ export class LibraryApi extends BaseLoopBackApi {
    * This usually means the response is a `Library` object.)
    * </em>
    */
-  public getGamer(id: any, refresh: any = {}): Observable<any> {
+  public getOwner(id: any, refresh: any = {}): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Libraries/:id/gamer";
+    "/Libraries/:id/owner";
     let _routeParams: any = {
       id: id
     };

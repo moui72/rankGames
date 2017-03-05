@@ -7,15 +7,15 @@ declare var Object: any;
 export interface LibraryInterface {
   name?: string;
   id?: number;
-  gamerId?: number;
-  gamer?: Gamer;
+  ownerId?: number;
+  owner?: Gamer;
 }
 
 export class Library implements LibraryInterface {
   name: string = 'New library';
   id: number = 0;
-  gamerId: number = 0;
-  gamer: Gamer = null;
+  ownerId: number = 0;
+  owner: Gamer = null;
   constructor(data?: LibraryInterface) {
     Object.assign(this, data);
   }
@@ -56,14 +56,14 @@ export class Library implements LibraryInterface {
           name: 'id',
           type: 'number'
         },
-        gamerId: {
-          name: 'gamerId',
+        ownerId: {
+          name: 'ownerId',
           type: 'number'
         },
       },
       relations: {
-        gamer: {
-          name: 'gamer',
+        owner: {
+          name: 'owner',
           type: 'Gamer',
           model: 'Gamer'
         },

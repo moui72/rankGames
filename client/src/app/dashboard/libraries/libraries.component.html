@@ -1,0 +1,12 @@
+<h2>Your libraries</h2>
+<ul *ngIf="count() > 0">
+  <li *ngFor="let lib of libs">
+    {{lib.name}}
+  </li>
+</ul>
+<p *ngIf="count() < 1">
+  You don't have any yet.
+</p>
+<div>
+  <button md-raised-button (click)="create()" color="primary">Create</button>
+</div>

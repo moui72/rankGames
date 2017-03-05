@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  Library
+} from '../index';
 
 declare var Object: any;
 export interface GamerInterface {
@@ -13,6 +16,7 @@ export interface GamerInterface {
   verificationToken?: string;
   id?: number;
   accessTokens?: any[];
+  libraries?: Library[];
 }
 
 export class Gamer implements GamerInterface {
@@ -27,6 +31,7 @@ export class Gamer implements GamerInterface {
   verificationToken: string = '';
   id: number = 0;
   accessTokens: any[] = null;
+  libraries: Library[] = null;
   constructor(data?: GamerInterface) {
     Object.assign(this, data);
   }
@@ -105,6 +110,11 @@ export class Gamer implements GamerInterface {
           name: 'accessTokens',
           type: 'any[]',
           model: ''
+        },
+        libraries: {
+          name: 'libraries',
+          type: 'Library[]',
+          model: 'Library'
         },
       }
     }
